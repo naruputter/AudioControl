@@ -1,0 +1,108 @@
+<html>
+<div class="page">
+
+    <h2>Filename In Music Folder</h1>
+
+        <div class="inputTrack">
+            <input id="trackName" type="text">
+            <button id="submit" onclick="selectMusic()">submit</button>
+            <h3 id="errorMessage"></h3>
+        </div>
+
+        <audio id="audioPlayer" controls>
+            <source id="audioSource" src="" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+
+        <div class="controlButton">
+            <button id="play" onclick="playAudio()">Play</button>
+            <button id="pause" onclick="pauseAudio()">Pause</button>
+            <button id="stop" onclick="stopAudio()">Stop</button>
+        </div>
+
+</div>
+
+</html>
+
+<script>
+
+    const folderPath = 'music'
+    const audioPlayer = document.getElementById('audioPlayer');
+    const audioSource = document.getElementById('audioSource');
+    const errorMessage = document.getElementById('errorMessage');
+
+    function selectMusic() {
+        var musicName = document.getElementById('trackName').value
+        audioSource.src = folderPath + "/" + musicName
+        audioPlayer.load();
+    }
+
+    function playAudio() { audioPlayer.play(); }
+
+    function pauseAudio() { audioPlayer.pause(); }
+
+    function stopAudio() {
+        audioPlayer.pause();
+        audioPlayer.currentTime = 0;
+    }
+
+</script>
+
+<style>
+    .page {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        min-height: 100vh;
+
+    }
+
+    .inputTrack {
+        display: flex;
+        gap: 10px;
+    }
+
+    .inputTrack input {
+        width: 200px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+    }
+
+    .inputTrack button {
+        background-color: rgb(39, 199, 27);
+        color: aliceblue;
+        border: 1px solid #ffffff;
+        border-radius: 5px;
+        padding-inline: 20px;
+    }
+
+    .controlButton {
+        display: flex;
+        gap: 10px;
+    }
+
+
+    .controlButton button {
+        color: white;
+        height: 40px;
+        border-radius: 10px;
+        border: 1px white;
+        padding-inline: 30px;
+    }
+
+    .controlButton #play {
+        background-color: rgb(35, 190, 48);
+    }
+
+    .controlButton #pause {
+        background-color: rgb(0, 132, 255);
+    }
+
+    .controlButton #stop {
+        background-color: red;
+    }
+</style>
